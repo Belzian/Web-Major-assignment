@@ -353,20 +353,56 @@ function make_thumb($src, $dest, $desired_width)
 }
 
 if ($_REQUEST['submit'] == "Add Event") {
-    if ($_REQUEST['event'] != null && $_REQUEST['info'] != null && $_REQUEST['date'] != null && $_REQUEST['artist'] != null) {
-        $stmt = $dbh->prepare("INSERT INTO events (event,info,date,artist) VALUES (?,?,?,?)");
+    if ($_REQUEST['event'] != null && $_REQUEST['info'] != null && $_REQUEST['location'] != null && $_REQUEST['date'] != null) {
+        $stmt = $dbh->prepare("INSERT INTO events (event,info,location,phone,mobile,link,date,artist) VALUES (?,?,?,?,?,?,?,?)");
         $stmt->bindParam(1, $_REQUEST['event']);
         $stmt->bindParam(2, $_REQUEST['info']);
-        $stmt->bindParam(3, $_REQUEST['date']);
-        $stmt->bindParam(4, $_REQUEST['artist']);
+        $stmt->bindParam(3, $_REQUEST['location']);
+        if($_REQUEST['phone']!=null){
+            $stmt->bindParam(4, $_REQUEST['phone']);
+        }else{
+            $stmt->bindParam(4, $null);
+        }
+        if($_REQUEST['mobile']!=null){
+            $stmt->bindParam(5, $_REQUEST['mobile']);
+        }else{
+            $stmt->bindParam(5, $null);
+        }
+        if($_REQUEST['link']!=null){
+            $stmt->bindParam(6, $_REQUEST['link']);
+        }else{
+            $stmt->bindParam(6, $null);
+        }
+        $stmt->bindParam(7, $_REQUEST['date']);
+        $stmt->bindParam(8, $_REQUEST['artist']);
 
         $stmt->execute();
+        header("Location: eventsView.php");
 
     } else {
-        $alert = "<script language='javascript'>alert('please fill in all areas')</script>";
-        echo $alert;
+        header("Location: addEvent.php");
     }
-    header("Location: eventsView.php");
+
+}
+
+if ($_REQUEST['submit'] == "Add Notice") {
+    if ($_REQUEST['notice'] != null && $_REQUEST['summary'] != null && $_REQUEST['info'] != null) {
+        $stmt = $dbh->prepare("INSERT INTO notices (notice,summary,info,date) VALUES (?,?,?,?)");
+        $stmt->bindParam(1, $_REQUEST['notice']);
+        $stmt->bindParam(2, $_REQUEST['summary']);
+        $stmt->bindParam(3, $_REQUEST['info']);
+
+        date_default_timezone_set("Australia/Brisbane") ;
+        $date = date('Y-m-d');
+        $stmt->bindParam(4, $date);
+
+        $stmt->execute();
+        header("Location: noticeBoard.php");
+
+    } else {
+        header("Location: addNotice.php");
+    }
+
 }
 
 if ($_REQUEST['submit'] == "Register") {

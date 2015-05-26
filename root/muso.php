@@ -16,15 +16,15 @@ include("dbconnect.php");
 <h2>Artist Details</h2>
 <?php
 $variable = $_GET['variable'];
-$link;
+
 if(is_numeric($variable)) {
+
     $sql = "SELECT * FROM artists WHERE id = '$variable'";
     $link = "<a href='viewArtist.php'>return</a>";
 }else{
     $sql = "SELECT * FROM artists WHERE name = '$variable'";
     $link = "<a href='eventsView.php'>return</a>";
 }
-
 
     //$sql = "SELECT * FROM artists";
     foreach ($dbh->query($sql) as $row) {
@@ -45,7 +45,7 @@ if(is_numeric($variable)) {
             echo "<b>Mobile: </b>", $row['mobile']."<br>";
         }
         if ($row['website'] != null) {
-            echo "<b>Link: </b><a href='", $row['website']."'>".$row['name']."</a><br>";
+            echo "<b>Link: </b><a href='". $row['website']."'>".$row['name']."</a><br>";
         }
     }
     echo "<br><b>$link</b>";

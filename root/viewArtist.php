@@ -25,7 +25,7 @@ error_reporting(E_ALL);
 
     <?php
 
-        $sql = "SELECT * FROM artists";
+        $sql = "SELECT * FROM artists ORDER BY name ASC";
         foreach ($dbh->query($sql) as $row)
         {
             echo '<article class="artist">';
@@ -39,10 +39,6 @@ error_reporting(E_ALL);
         }
         $dbh = null;
         ?>
-
-    <article class="artist">
-        <h2><a href="addArtist.php">Add new Artist</a></h2>
-    </article>
 </div>
 </body>
 </html>

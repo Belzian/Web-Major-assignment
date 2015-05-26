@@ -18,13 +18,25 @@ include("dbconnect.php")
         <fieldset>
             <h2>Add new event:</h2>
 
-            <label for="event">Event Name: </label>
+            <label for="event">*Event Name: </label>
             <input type="text" name="event"/>
             <br>
-            <label for="info">Information: </label>
+            <label for="info">*Information: </label>
             <input type="text" name="info"/>
             <br>
-            <label for='date'>Date: </label>
+            <label for="location">*Location: </label>
+            <input type="text" name="location"/>
+            <br>
+            <label for="phone">Phone: </label>
+            <input type="text" name="phone"/>
+            <br>
+            <label for="mobile">Mobile: </label>
+            <input type="text" name="mobile"/>
+            <br>
+            <label for="link">Link: </label>
+            <input type="text" name="link"/>
+            <br>
+            <label for='date'>*Date: </label>
             <input type='date' name='date'/>
             <br>
             <label for='artist'>Artist: </label>
@@ -39,6 +51,8 @@ include("dbconnect.php")
             </select>
             <br>
             <input type="submit" name="submit" id="submit" value="Add Event"/>
+
+            <p>*required fields</p>
         </fieldset>
     </form>
 </div>

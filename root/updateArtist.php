@@ -19,7 +19,7 @@ include("dbconnect.php")
     ?>
     <h2>Update Artists:</h2>
     <?php
-    $sql = "SELECT * FROM artists";
+    $sql = "SELECT * FROM artists ORDER BY name ASC";
     foreach ($dbh->query($sql) as $row) {
         ?>
         <form id="update/DeleteForm" name="update/DeleteForm" method="post" action="dbprocess.php"

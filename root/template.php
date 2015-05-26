@@ -15,7 +15,7 @@ else{
         <li><a href="index.php">Home</a></li>
         <li><a href="eventsView.php">Events</a></li>
         <li><a href="viewArtist.php">Artists</a></li>
-        <li><a href="#">News</a></li>
+        <li><a href="noticeBoard.php">News</a></li>
         <li><a href="about.html">About us</a></li>
         <li><a href="#">Contact us</a></li>
     </ul>
